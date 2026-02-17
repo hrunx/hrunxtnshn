@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>hrunxtnshn Settings</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      width: 600px;
+      padding: 30px;
+      margin: 20px auto;
+    }
+    .config-section {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    .config-section.active {
+      display: block;
+    }
+    .save-status {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      display: none;
+    }
+    .save-status.success {
+      display: block;
+      background: #d4edda;
+      color: #155724;
+    }
+    .save-status.error {
+      display: block;
+      background: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>hrunxtnshn Settings</h1>
+    <p class="subtitle">Configure integration mode and API credentials</p>
+  </div>
+
+  <div class="section">
+    <label for="modeSelect">Integration Mode:</label>
+    <select id="modeSelect" class="input-field">
+      <option value="standalone">Standalone (OpenAI API)</option>
+      <option value="platform">Platform (Leadora/Gasable Hub)</option>
+      <option value="orchestrator">Custom Orchestrator</option>
+    </select>
+  </div>
+
+  <!-- Standalone Configuration -->
+  <div id="standaloneConfig" class="config-section">
+    <h3>Standalone Mode Configuration</h3>
+    <p>Use your own OpenAI API key for direct integration.</p>
+    
+    <label for="standaloneApiKey">OpenAI API Key:</label>
+    <input type="password" id="standaloneApiKey" class="input-field" placeholder="sk-...">
+    
+    <label for="standaloneModel">Model:</label>
+    <select id="standaloneModel" class="input-field">
+      <option value="gpt-4.1-mini">GPT-4.1 Mini</option>
+      <option value="gpt-4.1-nano">GPT-4.1 Nano</option>
+      <option value="gpt-4">GPT-4</option>
+      <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+    </select>
+    
+    <label for="standaloneBaseUrl">Base URL (optional):</label>
+    <input type="text" id="standaloneBaseUrl" class="input-field" placeholder="https://api.openai.com/v1">
+  </div>
+
+  <!-- Platform Configuration -->
+  <div id="platformConfig" class="config-section">
+    <h3>Platform Mode Configuration</h3>
+    <p>Connect to Leadora or Gasable Hub orchestrator.</p>
+    
+    <label for="platformType">Platform:</label>
+    <select id="platformType" class="input-field">
+      <option value="gasable">Gasable Hub</option>
+      <option value="leadora">Leadora</option>
+    </select>
+    
+    <label for="platformEndpoint">API Endpoint:</label>
+    <input type="text" id="platformEndpoint" class="input-field" placeholder="https://api.gasablehub.com/agent">
+    
+    <label for="platformApiKey">API Key:</label>
+    <input type="password" id="platformApiKey" class="input-field" placeholder="Your platform API key">
+  </div>
+
+  <!-- Orchestrator Configuration -->
+  <div id="orchestratorConfig" class="config-section">
+    <h3>Custom Orchestrator Configuration</h3>
+    <p>Connect to your local Python orchestrator backend.</p>
+    
+    <label for="orchestratorEndpoint">Endpoint:</label>
+    <input type="text" id="orchestratorEndpoint" class="input-field" placeholder="http://localhost:8000">
+    
+    <label for="orchestratorApiKey">API Key (optional):</label>
+    <input type="password" id="orchestratorApiKey" class="input-field" placeholder="Optional authentication token">
+  </div>
+
+  <div class="section">
+    <button id="saveBtn" class="primary-btn">Save Settings</button>
+    <button id="testBtn" class="secondary-btn">Test Connection</button>
+  </div>
+
+  <div id="saveStatus" class="save-status"></div>
+
+  <script src="settings.js"></script>
+</body>
+</html>
