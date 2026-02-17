@@ -26,6 +26,9 @@ class Settings(BaseSettings):
     extension_timeout: int = 30
     max_concurrent_tasks: int = 5
     
+    # SearXNG Configuration
+    SEARXNG_URL: str = "https://searx.be"  # Public instance, or http://localhost:8080 for self-hosted
+    
     class Config:
         env_file = ".env"
         case_sensitive = False
