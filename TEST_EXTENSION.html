@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hrunxtnshn Extension Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        
+        .subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .section h2 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .step::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .code {
+            background: #2d3748;
+            color: #68d391;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        
+        .button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        
+        .button:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .button.secondary {
+            background: #48bb78;
+        }
+        
+        .button.secondary:hover {
+            background: #38a169;
+        }
+        
+        .warning {
+            background: #fff5f5;
+            border-left-color: #f56565;
+            color: #c53030;
+        }
+        
+        .success {
+            background: #f0fff4;
+            border-left-color: #48bb78;
+            color: #22543d;
+        }
+        
+        .info {
+            background: #ebf8ff;
+            border-left-color: #4299e1;
+            color: #2c5282;
+        }
+        
+        .test-url {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            border: 2px solid #667eea;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #2d3748;
+            color: #68d391;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            display: none;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .status.ready {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        
+        .status.pending {
+            background: #feebc8;
+            color: #7c2d12;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 hrunxtnshn Extension Test</h1>
+        <p class="subtitle">Test your autonomous browsing extension</p>
+        
+        <div class="section info">
+            <h2>📋 Installation Steps</h2>
+            <div class="step">Open Chrome and navigate to <strong>chrome://extensions/</strong></div>
+            <div class="step">Enable <strong>Developer mode</strong> (toggle in top right)</div>
+            <div class="step">Click <strong>Load unpacked</strong></div>
+            <div class="step">Select the <strong>extension</strong> folder from hrunxtnshn project</div>
+            <div class="step">The hrunxtnshn icon should appear in your toolbar</div>
+        </div>
+        
+        <div class="section success">
+            <h2>✅ Test: Extract Gasable Employees from LinkedIn</h2>
+            <p style="margin-bottom: 15px;">This test will extract all employees from the Gasable company LinkedIn page.</p>
+            
+            <div style="margin: 15px 0;">
+                <strong>Step 1:</strong> Make sure you're logged into LinkedIn
+            </div>
+            
+            <div style="margin: 15px 0;">
+                <strong>Step 2:</strong> Navigate to Gasable's LinkedIn People page:
+                <div class="test-url">
+                    https://www.linkedin.com/company/gasable/people/
+                </div>
+            </div>
+            
+            <div style="margin: 15px 0;">
+                <strong>Step 3:</strong> Open the extension popup (click the icon)
+            </div>
+            
+            <div style="margin: 15px 0;">
+                <strong>Step 4:</strong> The extension should automatically detect you're on a company people page
+            </div>
+            
+            <div style="margin: 15px 0;">
+                <strong>Step 5:</strong> Click "Extract Data" or send a message like:
+                <div class="code">Extract all employees from this company</div>
+            </div>
+            
+            <button class="button" onclick="openLinkedIn()">Open LinkedIn Gasable Page</button>
+            <button class="button secondary" onclick="copyURL()">Copy URL</button>
+        </div>
+        
+        <div class="section">
+            <h2>🔧 Alternative Test Methods</h2>
+            
+            <h3 style="margin: 15px 0 10px 0;">Method 1: Direct Content Script Test</h3>
+            <p style="margin-bottom: 10px;">Navigate to the LinkedIn page and run this in the console:</p>
+            <div class="code">
+chrome.runtime.sendMessage({
+  action: 'EXTRACT_COMPANY_EMPLOYEES',
+  maxPages: 3
+}, (response) => {
+  console.log('Extraction result:', response);
+});
+            </div>
+            
+            <h3 style="margin: 25px 0 10px 0;">Method 2: Check Extension Status</h3>
+            <p style="margin-bottom: 10px;">On the LinkedIn page, check console for:</p>
+            <div class="code">
+[hrunxtnshn] LinkedIn extractor loaded on: ...
+[hrunxtnshn] LinkedIn extractor ready
+            </div>
+        </div>
+        
+        <div class="section warning">
+            <h2>⚠️ Troubleshooting</h2>
+            <div class="step">If extension doesn't appear: Reload the extension in chrome://extensions/</div>
+            <div class="step">If extraction fails: Make sure you're logged into LinkedIn</div>
+            <div class="step">If no data appears: Check browser console (F12) for errors</div>
+            <div class="step">If content script not loading: Refresh the LinkedIn page after loading extension</div>
+        </div>
+        
+        <div class="section">
+            <h2>📊 Expected Result</h2>
+            <p style="margin-bottom: 10px;">The extension should extract employee data including:</p>
+            <ul style="margin-left: 25px; line-height: 1.8;">
+                <li><strong>Company Name:</strong> Gasable | غازابل</li>
+                <li><strong>Total Employees:</strong> ~63 employees</li>
+                <li><strong>Employee Data:</strong> Name, Profile URL, Headline, Location, Time at Company</li>
+                <li><strong>Format:</strong> JSON with array of employee objects</li>
+            </ul>
+        </div>
+        
+        <div id="result"></div>
+    </div>
+    
+    <script>
+        function openLinkedIn() {
+            window.open('https://www.linkedin.com/company/gasable/people/', '_blank');
+        }
+        
+        function copyURL() {
+            const url = 'https://www.linkedin.com/company/gasable/people/';
+            navigator.clipboard.writeText(url).then(() => {
+                alert('URL copied to clipboard!');
+            });
+        }
+        
+        function showResult(data) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = JSON.stringify(data, null, 2);
+            resultDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
