@@ -1,0 +1,62 @@
+.
+├── DEPLOYMENT.md
+├── EXAMPLES.md
+├── LICENSE
+├── README.md
+├── TESTING.md
+├── backend
+├── docs
+├── extension
+│   ├── README.md
+│   ├── background
+│   │   ├── apiClient.js
+│   │   ├── background.js
+│   │   ├── extractorRouter.js
+│   │   ├── fetchEngine.js
+│   │   ├── offscreenController.js
+│   │   └── taskRouter.js
+│   ├── content
+│   ├── manifest.json
+│   ├── offscreen
+│   │   ├── offscreen.html
+│   │   └── offscreen.js
+│   ├── ui
+│   │   ├── icons
+│   │   ├── permissionPrompt.html
+│   │   ├── popup.html
+│   │   ├── popup.js
+│   │   ├── settings.html
+│   │   ├── settings.js
+│   │   └── styles.css
+│   └── utils
+│       ├── config.js
+│       ├── safeJSON.js
+│       ├── schemaInstagram.js
+│       ├── schemaLinkedIn.js
+│       └── schemaMaps.js
+├── orchestrator
+│   ├── README.md
+│   ├── agent
+│   │   ├── __init__.py
+│   │   ├── graph.py
+│   │   ├── nodes.py
+│   │   ├── state.py
+│   │   └── tools.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   └── routes.py
+│   ├── config.py
+│   ├── main.py
+│   ├── requirements.txt
+│   ├── services
+│   │   ├── __init__.py
+│   │   ├── extension_bridge.py
+│   │   └── task_queue.py
+│   └── utils
+│       └── __init__.py
+├── portal-integration
+├── project_structure.txt
+└── upload_to_github.sh
+
+15 directories, 44 files
