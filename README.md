@@ -1,231 +1,452 @@
-# hrunxtnshn
+# 🕵️ hrunxtnshn - Invisible LinkedIn Extraction
 
-**Invisible autonomous research assistant running inside your browser**
+**Completely invisible, background-only LinkedIn employee extraction system.**
 
-A complete, deployable autonomous-browsing extension with multiple integration modes, including standalone OpenAI API support, platform integration (Leadora/Gasable Hub), and a custom Python orchestrator backend using LangGraph.
-
-## Features
-
-### Browser Extension
-- **Manifest V3** compatible Chrome extension
-- **Invisible browsing** using Chrome offscreen API
-- **Authenticated requests** using browser session cookies
-- **Data extraction** from LinkedIn, Instagram, and Google Maps
-- **Multiple integration modes**:
-  - Standalone with OpenAI API
-  - Platform integration (Leadora/Gasable Hub)
-  - Custom Python orchestrator
-
-### Python Orchestrator
-- **LangGraph agent** for autonomous task planning
-- **FastAPI backend** with async support
-- **Task queue** for concurrent processing
-- **Streaming API** for real-time updates
-- **Fully local** and self-contained
-
-## Project Structure
-
-```
-hrunxtnshn/
-├── extension/              # Browser extension
-│   ├── manifest.json
-│   ├── background/         # Service worker
-│   ├── offscreen/          # Invisible browsing
-│   ├── content/            # Content scripts
-│   ├── ui/                 # User interface
-│   └── utils/              # Utilities
-├── orchestrator/           # Python backend
-│   ├── main.py
-│   ├── agent/              # LangGraph agent
-│   ├── api/                # FastAPI routes
-│   ├── services/           # Services
-│   └── utils/              # Utilities
-├── backend/                # Node.js backend (optional)
-├── portal-integration/     # Next.js integration examples
-└── docs/                   # Documentation
-```
-
-## Quick Start
-
-### 1. Install Browser Extension
-
-```bash
-# Clone repository
-git clone https://github.com/hrunx/hrunxtnshn.git
-cd hrunxtnshn
-
-# Load extension in Chrome
-# 1. Open chrome://extensions/
-# 2. Enable "Developer mode"
-# 3. Click "Load unpacked"
-# 4. Select the "extension" directory
-```
-
-### 2. Configure Standalone Mode (Recommended for Testing)
-
-1. Click the extension icon in Chrome toolbar
-2. Click "Settings"
-3. Select "Standalone (OpenAI API)" mode
-4. Enter your OpenAI API key
-5. Save settings and test connection
-
-### 3. Test the Extension
-
-1. Click the extension icon
-2. Enter a task, for example:
-   ```
-   Extract data from LinkedIn profile https://linkedin.com/in/example
-   ```
-3. Click "Execute Task"
-4. View the extracted data
-
-### 4. (Optional) Run Python Orchestrator
-
-```bash
-# Navigate to orchestrator directory
-cd orchestrator
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Configure environment
-cp .env.example .env
-# Edit .env and add your OpenAI API key
-
-# Start server
-python main.py
-```
-
-Then configure the extension to use orchestrator mode with endpoint `http://localhost:8000`.
-
-## Integration Modes
-
-### Standalone Mode
-
-**Best for**: Testing, individual use, simple tasks
-
-- Direct OpenAI API integration
-- No backend required
-- Configure API key in extension settings
-- Instant setup
-
-### Platform Mode
-
-**Best for**: Integration with existing orchestrator platforms
-
-- Connect to Leadora or Gasable Hub
-- Shared authentication and task management
-- Platform-managed agent infrastructure
-- Configure platform endpoint and API key
-
-### Orchestrator Mode
-
-**Best for**: Full control, advanced use cases, local deployment
-
-- Custom Python backend using LangGraph
-- Run locally or deploy to server
-- Full control over agent behavior
-- Configurable LLM and parameters
-
-## Documentation
-
-- [Extension README](extension/README.md) - Extension installation and usage
-- [Orchestrator README](orchestrator/README.md) - Python backend setup and API
-- [Architecture Design](docs/architecture.md) - System architecture and design decisions
-
-## Use Cases
-
-### Data Extraction
-- Extract LinkedIn profiles for lead generation
-- Scrape Instagram profiles for social media analysis
-- Collect Google Maps reviews for market research
-
-### Research Automation
-- Gather information from multiple sources
-- Monitor competitor websites
-- Track product prices and availability
-
-### Testing & QA
-- Automated website testing
-- Form submission testing
-- User flow validation
-
-## Privacy & Security
-
-- **No data collection**: Extension doesn't collect or transmit personal data
-- **Local processing**: All extraction happens in your browser
-- **Encrypted storage**: API keys stored in Chrome's encrypted storage
-- **User consent**: Explicit permission required for invisible browsing
-- **Session isolation**: Offscreen browsing isolated from main browser
-
-## Requirements
-
-### Browser Extension
-- Chrome 109+ or Edge 109+
-- Manifest V3 support
-
-### Python Orchestrator
-- Python 3.11+
-- OpenAI API key
-
-## Development
-
-### Extension Development
-
-```bash
-cd extension
-# Make changes to code
-# Reload extension in chrome://extensions/
-```
-
-### Orchestrator Development
-
-```bash
-cd orchestrator
-pip install -r requirements.txt
-python main.py
-```
-
-## Contributing
-
-Contributions are welcome! Please:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## License
-
-MIT License - see [LICENSE](LICENSE) file for details
-
-## Support
-
-For issues, questions, or feature requests:
-- GitHub Issues: https://github.com/hrunx/hrunxtnshn/issues
-- Documentation: https://github.com/hrunx/hrunxtnshn/wiki
-
-## Roadmap
-
-- [ ] WebSocket support for real-time extension-orchestrator communication
-- [ ] More extractors (Twitter, Facebook, Reddit)
-- [ ] Browser automation (form filling, clicking)
-- [ ] Multi-tab orchestration
-- [ ] Visual workflow builder
-- [ ] Chrome Web Store publication
-
-## Acknowledgments
-
-Built with:
-- [LangChain](https://github.com/langchain-ai/langchain) - LLM framework
-- [LangGraph](https://github.com/langchain-ai/langgraph) - Agent workflow
-- [FastAPI](https://fastapi.tiangolo.com/) - Python web framework
-- [Chrome Extensions API](https://developer.chrome.com/docs/extensions/) - Browser extension platform
-
-## Author
-
-Created by hrunx
+No visible browser. No tabs. No windows. Just results.
 
 ---
 
-**Note**: This extension is for educational and research purposes. Always respect website terms of service and robots.txt when using automated browsing tools.
+## 🎯 What This Does
+
+Extract employee data from any LinkedIn company page **completely invisibly**:
+
+- ✅ **No visible browser** - Runs in headless mode
+- ✅ **No tabs or windows** - Everything in background
+- ✅ **Session-based** - Login once, reuse forever
+- ✅ **Terminal-only** - All output in command line
+- ✅ **HTML parsing** - Intelligent DOM navigation
+- ✅ **Fully automated** - Search → Extract → Save
+
+---
+
+## 🚀 Quick Start (3 Steps)
+
+### 1. Install Dependencies
+
+```bash
+cd orchestrator
+pip install -r requirements.txt
+playwright install chromium
+```
+
+### 2. Login Once (One-Time Setup)
+
+```bash
+python cli_extractor.py login
+```
+
+**What happens:**
+- Opens a visible browser window (one time only)
+- You log in to LinkedIn manually
+- Session saved to `linkedin_session.json`
+- Browser closes
+
+**You never need to do this again!**
+
+### 3. Extract Employees (Invisible)
+
+```bash
+python cli_extractor.py extract "Hysabat Solutions"
+```
+
+**What happens:**
+- Loads your saved session (no login)
+- Starts invisible browser (headless)
+- Searches for company
+- Navigates to LinkedIn page
+- Extracts all employees
+- Saves to JSON
+- **NO VISIBLE BROWSER AT ANY POINT**
+
+---
+
+## 📊 Example Usage
+
+### Extract by Company Name
+
+```bash
+python cli_extractor.py extract "Gasable"
+```
+
+**Output:**
+```
+🔍 Extracting employees from: Gasable
+============================================================
+
+[1/4] Searching for company LinkedIn URL...
+✅ Found: https://www.linkedin.com/company/gasable/
+
+[2/4] Checking LinkedIn session...
+✅ Logged in with saved session
+
+[3/4] Extracting employees (max 10 pages)...
+⏳ This happens completely in the background...
+
+[4/4] Extraction complete!
+============================================================
+Company: Gasable | غازابل
+Total Employees: 63
+Extracted: 63
+Pages Scraped: 6
+============================================================
+
+📋 First 10 employees:
+
+1. Dana Al-Yemni
+   Position: Deputy Manager Of Information Technology
+   Location: Riyadh, Saudi Arabia
+
+2. Ahmed Alsoboh, CPIM
+   Position: Supply Chain Manager
+   Location: Riyadh, Saudi Arabia
+
+... and 61 more employees
+
+💾 Full results saved to: gasable_employees.json
+```
+
+### Extract by Direct URL
+
+```bash
+python cli_extractor.py url "https://www.linkedin.com/company/hysabatsolutions/"
+```
+
+### Extract with Page Limit
+
+```bash
+python cli_extractor.py extract "Company Name" --max-pages 5
+```
+
+---
+
+## 🏗️ How It Works
+
+```
+User Command
+    ↓
+Search Company (SearXNG)
+    ↓
+Find LinkedIn URL
+    ↓
+Load Saved Session (linkedin_session.json)
+    ↓
+Start Headless Browser (Playwright)
+    ↓
+Navigate Invisibly
+    ↓
+Parse HTML (BeautifulSoup)
+    ↓
+Extract Employee Data
+    ↓
+Handle Pagination
+    ↓
+Save to JSON
+    ↓
+Close Browser
+```
+
+**Everything happens in the background. No visible windows.**
+
+---
+
+## 🔐 Session Management
+
+### How Sessions Work
+
+1. **First time:** You log in manually (visible browser)
+2. **Session saved:** Cookies stored in `linkedin_session.json`
+3. **Future extractions:** Session loaded automatically (invisible)
+4. **Session duration:** 30-90 days typically
+5. **Re-login:** Just run `python cli_extractor.py login` again
+
+### Session File
+
+```json
+{
+  "cookies": [
+    {
+      "name": "li_at",
+      "value": "AQEDARxxxxxxxx...",
+      "domain": ".linkedin.com"
+    }
+  ],
+  "origins": [...]
+}
+```
+
+**Keep this file secure!** It contains your LinkedIn session.
+
+---
+
+## 📁 Project Structure
+
+```
+hrunxtnshn/
+├── orchestrator/
+│   ├── cli_extractor.py          # Main CLI tool
+│   ├── test_extraction.py        # Test script
+│   ├── config.py                 # Configuration
+│   ├── requirements.txt          # Dependencies
+│   ├── services/
+│   │   ├── headless_browser.py   # Playwright headless browser
+│   │   ├── html_navigator.py    # HTML parsing & navigation
+│   │   ├── searxng_client.py    # Search integration
+│   │   └── session_manager.py   # Session management
+│   └── linkedin_session.json    # Saved session (created after login)
+└── INVISIBLE_EXTRACTION_GUIDE.md # Complete documentation
+```
+
+---
+
+## 🎨 Key Components
+
+### 1. Headless Browser (`headless_browser.py`)
+
+```python
+browser = HeadlessBrowser()
+await browser.start(headless=True)  # Invisible!
+await browser.navigate(url)
+employees = await browser.extract_company_employees(url)
+```
+
+**Features:**
+- Playwright-based
+- Completely invisible
+- Session persistence
+- Automatic scrolling
+- Pagination handling
+
+### 2. HTML Navigator (`html_navigator.py`)
+
+```python
+navigator = LinkedInHTMLNavigator()
+navigator.parse_page(html)
+employees = navigator.extract_employee_cards()
+```
+
+**Features:**
+- BeautifulSoup parsing
+- Element detection
+- Data extraction
+- Pagination logic
+
+### 3. CLI Tool (`cli_extractor.py`)
+
+```bash
+python cli_extractor.py login              # One-time login
+python cli_extractor.py extract "Company"  # Extract by name
+python cli_extractor.py url "https://..."  # Extract by URL
+```
+
+---
+
+## 🔧 Advanced Usage
+
+### Programmatic Usage
+
+```python
+from services.headless_browser import HeadlessBrowser
+
+async def extract_company(url):
+    browser = HeadlessBrowser("linkedin_session.json")
+    await browser.start(headless=True)
+    
+    result = await browser.extract_company_employees(url, max_pages=10)
+    
+    await browser.close()
+    return result
+
+# Run
+result = asyncio.run(extract_company("https://linkedin.com/company/xyz/"))
+print(f"Extracted {result['extracted_count']} employees")
+```
+
+### Batch Processing
+
+```python
+companies = [
+    "https://linkedin.com/company/company1/",
+    "https://linkedin.com/company/company2/",
+    "https://linkedin.com/company/company3/",
+]
+
+for url in companies:
+    result = await browser.extract_company_employees(url)
+    save_to_database(result)
+    await asyncio.sleep(10)  # Rate limiting
+```
+
+### API Integration
+
+```python
+from fastapi import FastAPI
+from services.headless_browser import HeadlessBrowser
+
+app = FastAPI()
+
+@app.post("/extract")
+async def extract(company_url: str):
+    browser = HeadlessBrowser()
+    await browser.start(headless=True)
+    result = await browser.extract_company_employees(company_url)
+    await browser.close()
+    return result
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### "Not logged in" Error
+
+**Solution:**
+```bash
+python cli_extractor.py login
+```
+
+### "No employee cards found"
+
+**Possible causes:**
+- Session expired
+- LinkedIn changed HTML structure
+- Page didn't load
+
+**Solutions:**
+1. Re-login: `python cli_extractor.py login`
+2. Increase wait time in `headless_browser.py`
+3. Update selectors in `html_navigator.py`
+
+### Session Expired
+
+LinkedIn sessions last 30-90 days. If expired:
+```bash
+python cli_extractor.py login  # Re-login
+```
+
+---
+
+## ⚡ Performance
+
+- **Single page:** ~5-10 seconds
+- **10 pages:** ~1-2 minutes  
+- **100 employees:** ~2-3 minutes
+
+### Optimization
+
+```python
+# Reduce wait times (if stable)
+await asyncio.sleep(1)  # Instead of 2-3
+
+# Parallel extraction
+tasks = [extract_company(url) for url in urls]
+results = await asyncio.gather(*tasks)
+```
+
+---
+
+## 🔒 Privacy & Ethics
+
+### Best Practices
+
+✅ **DO:**
+- Use for legitimate purposes
+- Respect LinkedIn's ToS
+- Rate limit requests
+- Extract public data only
+
+❌ **DON'T:**
+- Scrape at high frequency
+- Extract private data
+- Violate privacy laws
+
+### Rate Limiting
+
+```python
+await asyncio.sleep(random.uniform(5, 10))  # Random delay
+```
+
+---
+
+## 📚 Full Documentation
+
+See `INVISIBLE_EXTRACTION_GUIDE.md` for:
+- Complete architecture
+- HTML parsing examples
+- Customization guide
+- API reference
+- Advanced techniques
+
+---
+
+## 🎯 Use Cases
+
+1. **Recruitment:** Find candidates at specific companies
+2. **Market Research:** Analyze competitor team sizes
+3. **Lead Generation:** Identify decision makers
+4. **Network Analysis:** Map company connections
+
+---
+
+## ✨ Why This System?
+
+### Traditional Scraping
+- ❌ Visible browser windows
+- ❌ Manual clicking
+- ❌ Browser automation visible to user
+- ❌ Requires constant attention
+
+### hrunxtnshn
+- ✅ Completely invisible
+- ✅ Fully automated
+- ✅ Background processing
+- ✅ Terminal-only output
+- ✅ Session persistence
+- ✅ HTML-based navigation
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# 1. Clone repo
+git clone https://github.com/hrunx/hrunxtnshn.git
+cd hrunxtnshn/orchestrator
+
+# 2. Install
+pip install -r requirements.txt
+playwright install chromium
+
+# 3. Login (one time)
+python cli_extractor.py login
+
+# 4. Extract (invisible)
+python cli_extractor.py extract "Your Company Name"
+```
+
+**That's it! No visible browser. No tabs. Just results.**
+
+---
+
+## 📞 Support
+
+- **Documentation:** `INVISIBLE_EXTRACTION_GUIDE.md`
+- **GitHub:** https://github.com/hrunx/hrunxtnshn
+- **Issues:** Check troubleshooting section
+
+---
+
+## 🎉 Summary
+
+**hrunxtnshn** is a completely invisible LinkedIn extraction system that:
+
+- Runs in the background (no visible browser)
+- Uses saved sessions (login once)
+- Parses HTML intelligently
+- Extracts employee data automatically
+- Outputs to terminal and JSON
+
+**Perfect for automated, invisible LinkedIn data extraction.**
+
+---
+
+**Happy invisible browsing! 🕵️**
